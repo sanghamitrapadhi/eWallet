@@ -6,12 +6,15 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.wallet.constant.TransactionType;
 
+import lombok.Builder;
 import lombok.Data;
-
+@Builder
 @Data
 @Entity
 @Table(name = "Transaction")
@@ -25,6 +28,11 @@ public class Transaction {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "type", nullable = false)
 	private TransactionType type;
+	
+	@ManyToOne
+	@JoinColumn(name="account_id")
+	private Account account;
+	
 
 //	public Transaction() {
 //

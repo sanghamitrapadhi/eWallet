@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 import com.wallet.constant.AccountType;
 
@@ -41,8 +40,7 @@ public class Account {
 	@Column(name="balance", nullable=false)
 	private Double balance;
 	
-	@OneToMany
-	@JoinColumn(name="account_id")
+	@OneToMany(mappedBy="account")
 	private List<Transaction> transction;
 	
 //	public Long getId() {

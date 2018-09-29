@@ -32,7 +32,7 @@ public class AccountController {
 		
 		Player player=playerService.findByCode(code);
 		
-		Double balance=accountSevice.findByPlayerId(player.getId()).getBalance();
+		Double balance=accountSevice.findByPlayer(player).getBalance();
 		logger.debug("Account balance is " +balance);
 		
 		ResponseMessage response = ResponseMessage.builder()
