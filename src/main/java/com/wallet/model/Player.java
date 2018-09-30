@@ -1,5 +1,8 @@
 package com.wallet.model;
-
+/**
+ * @author Sanghamitra
+ * Model object for Account object
+ */
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

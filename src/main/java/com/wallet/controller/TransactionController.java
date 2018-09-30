@@ -20,7 +20,8 @@ import com.wallet.service.TransactionService;
 
 /**
  * @author sanghamitra
- * This service expects a transaction_id and type(credit or debit) in the path variable which is then validated. 
+ * Controller for handling player related services.
+ * This expects an id whic is ext_transaction_id and enum type(credit or debit) in the path variable which is then validated. 
  * transaction_id is a constant and validated
  *
  */

@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wallet.message.ResponseMessage;
 import com.wallet.model.Player;
 import com.wallet.service.PlayerService;
-
+/**
+ * @author Sanghamitra
+ * Controller for handling player related services
+ * 
+ */
 @RestController
 
 public class PlayerController {
@@ -41,7 +45,6 @@ public class PlayerController {
 				.message("success")
 				.build();
 		return response;
-        //return "Player "+firstName +" " +lastNam e+ " created";
     }
 	
 	@RequestMapping(value={"/playerlist"}, method=RequestMethod.GET)

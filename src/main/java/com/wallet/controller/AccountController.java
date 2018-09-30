@@ -15,7 +15,11 @@ import com.wallet.model.Account;
 import com.wallet.model.Player;
 import com.wallet.service.AccountService;
 import com.wallet.service.PlayerService;
-
+/**
+ * @author Sanghamitra
+ * Controller for handling account related services
+ * 
+ */
 @RestController
 public class AccountController {
 	

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.wallet.model.Transaction;
 
 @Repository
-
 public interface TransactionRepository extends JpaRepository<Transaction, Long>{
 	
 	//public void save(Transaction transaction);
