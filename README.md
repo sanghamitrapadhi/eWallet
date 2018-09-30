@@ -4,6 +4,7 @@ Technologies and Frameworks used : Java8, Spring Boot, Maven, RestAPI, JPA and H
 NOTE:JAVA8 and Maven should be set.
 Please open terminal/command prompt and type java -version, should use java1.8.
 Please open terminal/command prompt and type mvn -version, it should display latest version of maven.
+And after the application is set up, you can see all the REST API's in your local swagger console
 
 Import the project as Maven project in STS. Right click and update project.
 
@@ -26,3 +27,4 @@ Player, Account and Transaction
 Open http://localhost:8080/eWallet/swagger-ui.html which opens the swagger and where the rest API's can be tested
 
 ---------------------------------------------------------------------
+
