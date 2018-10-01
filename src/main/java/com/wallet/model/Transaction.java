@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import com.wallet.constant.TransactionType;
 
@@ -20,7 +21,7 @@ import lombok.Data;
 @Builder
 @Data
 @Entity
-@Table(name = "Transaction")
+@Table(name = "Transaction", uniqueConstraints=@UniqueConstraint(columnNames={"unique_transaction_id"}))
 public class Transaction {
 
 	@Id
@@ -36,34 +37,10 @@ public class Transaction {
 	@JoinColumn(name="account_id")
 	private Account account;
 	
-
-//	public Transaction() {
-//
-//	}
-//
-//	public Long getId() {
-//		return id;
-//	}
-//
-//	public void setId(Long id) {
-//		this.id = id;
-//	}
-//
-//	public String getType() {
-//		return type;
-//	}
-//
-//	public void setType(String type) {
-//		this.type = type;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return "Transaction [type=" + type;
-//	}
-//
-//	public Transaction(String type) {
-//
-//	}
+	@Column(name="unique_transaction_id")
+	private String uniqueTransactionId;
+	
+	@Column(name="transaction_amount")
+	private Double transactionAmount;
 
 }
