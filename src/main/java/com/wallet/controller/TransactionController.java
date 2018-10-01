@@ -11,11 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wallet.constant.TransactionType;
 import com.wallet.message.ResponseMessage;
-import com.wallet.model.Account;
-import com.wallet.model.Player;
-import com.wallet.model.Transaction;
 import com.wallet.service.AccountService;
-import com.wallet.service.PlayerService;
 import com.wallet.service.TransactionService;
 
 /**
@@ -32,9 +28,6 @@ public class TransactionController {
 
 	@Autowired
 	AccountService accountSevice;
-	
-	@Autowired
-	private PlayerService playerService;
 	
 	@Autowired
 	private TransactionService transactionService;
@@ -54,50 +47,9 @@ public class TransactionController {
 			logger.debug("Invalid transaction id");
 			return response;
 		}
-
-		Player player = playerService.findByCode(playerCode);
-		Double balance = accountSevice.getBalance(player);
-		Double newBalance=0.0;
 		
-		newBalance = findNewBalance(type, amount, balance);
-		
-		if (type.equals(TransactionType.DEBIT) && newBalance <= 0) {
-			response.setMessage("Insufficient balance");
-			logger.debug("Insufficient balance");
-			return response;
-		} else {
-			saveTransaction(type, response, player, newBalance);
-		}
+		response = transactionService.saveTransaction(type, playerCode, amount, response);
 		return response;
 	}
-
-	private synchronized Double findNewBalance(TransactionType type, Double amount, Double balance) {
-		Double newBalance;
-		if (type.equals(TransactionType.DEBIT)) {
-			newBalance = balance - amount;
-		} else {
-			newBalance = balance + amount;
-		}
-		return newBalance;
-	}
-
-	private void saveTransaction(TransactionType type, ResponseMessage response, Player player,
-			Double newBalance) {
-		
-		Account account=accountSevice.findByPlayer(player);
-		account.setBalance(newBalance);
-		accountSevice.save(account);
-		
-		Transaction transaction = Transaction.builder()
-				.account(account)
-				.type(type)
-				.build();
-		
-		transactionService.save(transaction);
-		
-		logger.debug("Transaction saved");
-		response.setMessage("Transaction registered successfully");
-	}
-	
 	
 }
