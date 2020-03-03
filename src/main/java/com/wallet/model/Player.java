@@ -1,4 +1,6 @@
 package com.wallet.model;
+import java.util.List;
+
 /**
  * @author Sanghamitra
  * Model object for Account object
@@ -11,13 +13,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.wallet.constant.AccountType;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Player", uniqueConstraints=@UniqueConstraint(columnNames="code"))
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Player {
 	@Id
 	@Column(name = "id", nullable = false)

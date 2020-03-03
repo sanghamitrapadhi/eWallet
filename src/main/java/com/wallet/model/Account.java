@@ -19,12 +19,16 @@ import javax.persistence.Table;
 
 import com.wallet.constant.AccountType;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Table(name="Account")
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class Account {
 
